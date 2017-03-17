@@ -49,8 +49,8 @@ max_jobs: 1
 #    environment configuration    #
 #---------------------------------#
 
-# Build worker image (VM template)
-image: Visual Studio 2015
+# # Build worker image (VM template)
+# image: Visual Studio 2015
 
 # scripts that are called at very beginning, before repo cloning
 init:
