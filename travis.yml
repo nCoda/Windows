@@ -1,0 +1,59 @@
+env:
+  global:
+    secure: LVAu6qNHZoyJEyctOJEmqraxdvn7oirPOV1V1U0Q2RDPAb/dYZNj7ta3ULPtsUCsBsJLSjVr4RHg0S8r3LqAD1miqIdGLyT++FYXZTfXChYTHn2sxLv8Zmdra8VFQRG/0ZHORltCcDAp1uk6DSph14TQABk/cXcqZQGJbKsDlkhk7r/yxJvbVWKZ0MdCgxwF5xYkQJFiyV7KUpmoOb4wOd8W3kFA4EiBgwrKKZOUetdo4fDXTx4A2NnFYp1Qz4Kl7VyqGOyR4PXwUn0X/DY2R2TU1kmu6v5ZiHesyEw11QZi2NJi2uKghKzYrlE4DDcj0Leid6GoOmA0Ptai2uTeBdZprUwM/GTj5g/0qp0l5H5fcURnIUejLfucVMA0jHGwBDodrWtuUJIuK4BR/3Bq7wuGRgabFaoSj7f8a2DGwT9oMdNYmetg3121ts74/t0wemCqz/z04aEe0KWVgDsuGI7QqDcgTsWx9ZWZJ8fBZErZrZZYIZz0i6LWWojn+qnfx448x83jKjn7IxPNj/Ep+Az/BztICteQS31lW+m/VhvW5f0aPbc8Jk8Lou2ZydDsYAOmKY6UGtGXpDJ1epbQzqaOqXXM9Qn9B266oTYgxZmcmmHJ+f56/Y9jYu57ecR3iJp+zNB7Ho5MnM2FYtN89Gvzg5wMowEwz0HKY9MUpIA=
+notifications:
+  email: false
+matrix:
+  include:
+  - os: osx
+    language: generic
+    cache: pip
+branches:
+  only:
+  - main
+before_install:
+- git clone --recursive https://github.com/nCoda/julius.git julius
+- git clone https://github.com/nCoda/lychee.git lychee
+- git clone https://github.com/nCoda/fujian.git fujian
+- git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+- git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
+- git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
+- rm julius/js/electron_main.js
+- cp electron_main_production.js julius/js/electron_main.js
+- pip install --upgrade pip
+- pip install Cython
+- pip install virtualenv
+- pip install py2app
+- pip install biplist
+install:
+- cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
+- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
+- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
+- virtualenv --system-site-packages backend_venv
+- source backend_venv/bin/activate
+- cd mercurial-hug && pip install . && cd ..
+- cd lychee && pip install . && cd ..
+- cd fujian && pip install . && cd ..
+- cd ShelfExtender && pip install . && cd ..
+- cd mercurial-hug && pip install . && cd ..
+- cd hgdemo_config && python -m shelfex && cd ..
+- mkdir programs
+- cp -r hgdemo_config/repo programs/hgdemo
+- pip install pytest
+- pip install mock
+
+script: source build_test.sh
+before_deploy:
+- python package_ncoda_macOS.py
+- python backend/setup.py py2app
+- cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
+- hdiutil create -srcfolder nCoda.app nCoda.dmg
+deploy:
+  provider: releases
+  api_key:
+    secure: FURM7v6sRU/e84bTRvcl+hmzr4pXDOoPSbWPTCLmIaY7qByQU/Mcq/ov+BDoICx//4gKH8aNQVIzx3fkvXLk1tYOqWVHuFXzQ809c+R2FtqjOBH7++bq8QPqrKOaiyodabh34ioZOYKC8cASz70LJZ8mZZ4nk7HY+TDKigunoMvONasPzTwuWbGJg9vjupjpbv1ip07HeXORjX7uC2uIqr3ldxyhG/0XbbKJhtB22iK0JisQANAxe9DFXGNy+kDDHDPI7StEdCZsSUrNpeEVYcqLIyujxjeM2qlJAdKpie3wZFRYBYIxkjowno6O2CkHnwoE/GKxnjJ1jj3nKsa7qEGl4bcaAqO6icDGfbSrELdw1UWdCY0OBzMwYLVV6iJNYABuUMZg4Jxl0HmQ4HotnJGq6si+6TcGDI6rXfsTtt54aVkStJ3I+drMplUK6f8dcOacWLIuQr1cYEJVvZEfsqH4Uacqot5SqW1kx9Sc6hvwRJyIYKYTcKraMIzol4h3iLqlDMHZlyfcyQYF+LYo9AVFETEWbqjGf2dtx/mnMgwhRmsiyJmywt7wkftNEoL4TuosUL23RqfbvU8T7TvXXntTLRDRR2X03ddhQrL8fYDiNEOBVSWUO80Agxum+aWOy8o0mGBZ8Ze3qsXeClSvrEUMxxWujrRFYih6cGPp8wE=
+  file: nCoda.dmg
+  skip_cleanup: true
+  on:
+    repo: nCoda/macOS
+    branch: main
