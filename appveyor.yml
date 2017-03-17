@@ -57,7 +57,7 @@ init:
   - git config --global core.autocrlf input
 
 # clone directory
-clone_folder: c:\projects\myproject
+clone_folder: c:\projects\nCoda\Windows
 
 # fetch repository as zip archive
 # shallow_clone: true                 # default is "false"
@@ -134,16 +134,17 @@ configuration: Release
 
 build:
   parallel: true                  # enable MSBuild parallel builds
-  project: MyTestAzureCS.sln      # path to Visual Studio solution or project
-  publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
-  publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
-  publish_azure: true             # package Azure Cloud Service projects and push to artifacts
-  publish_nuget: true             # package projects with .nuspec files and push to artifacts
-  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
-  include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
+  # project: MyTestAzureCS.sln      # path to Visual Studio solution or project
+  # publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
+  # publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
+  # publish_azure: true             # package Azure Cloud Service projects and push to artifacts
+  # publish_nuget: true             # package projects with .nuspec files and push to artifacts
+  # publish_nuget_symbols: true     # generate and publish NuGet symbol packages
+  # include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
 
   # MSBuild verbosity level
-  verbosity: quiet|minimal|normal|detailed
+  # verbosity: quiet|minimal|normal|detailed
+  verbosity: normal
 
 
 # scripts to run before build
@@ -257,14 +258,14 @@ deploy_script:
 #        global handlers          #
 #---------------------------------#
 
-# on successful build
+on successful build
 on_success:
-  - do something
+  
 
 # on build failure
 on_failure:
-  - do something
+  
 
 # after build failure or success
 on_finish:
-  - do something
+  
