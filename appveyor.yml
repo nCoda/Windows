@@ -96,14 +96,6 @@ install:
   - cmd: echo This is batch again
   - cmd: set MY_VAR=12345
 
-
-# Automatically register private account and/or project AppVeyor NuGet feeds.
-nuget:
-  account_feed: true
-  project_feed: true
-  disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to
-                                  # account/project feeds for pull request builds
-
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
@@ -124,8 +116,8 @@ configuration: Release
 #  - Debug
 #  - Release
 
-build:
-  parallel: true                  # enable MSBuild parallel builds
+# build:
+#   parallel: true                  # enable MSBuild parallel builds
   # project: MyTestAzureCS.sln      # path to Visual Studio solution or project
   # publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
   # publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
@@ -134,9 +126,9 @@ build:
   # publish_nuget_symbols: true     # generate and publish NuGet symbol packages
   # include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
 
-  # MSBuild verbosity level
-  # verbosity: quiet|minimal|normal|detailed
-  verbosity: normal
+  # # MSBuild verbosity level
+  # # verbosity: quiet|minimal|normal|detailed
+  # verbosity: normal
 
 
 # scripts to run before build
@@ -158,14 +150,14 @@ build_script:
 #       tests configuration       #
 #---------------------------------#
 
-test:
-  assemblies:
-    - asm1.dll
-    - asm2.dll
+# test:
+#   assemblies:
+#     - asm1.dll
+#     - asm2.dll
 
-  categories:
-    - UI
-    - E2E
+#   categories:
+#     - UI
+#     - E2E
 
 # to run tests from different categories as separate jobs in parallel
 #test:
@@ -196,18 +188,18 @@ test_script:
 
 artifacts:
 
-  # pushing a single file
-  - path: test.zip
+  # # pushing a single file
+  # - path: test.txt
 
-  # pushing a single file with environment variable in path and "Deployment name" specified
-  - path: MyProject\bin\$(configuration)
-    name: myapp
+  # # pushing a single file with environment variable in path and "Deployment name" specified
+  # - path: MyProject\bin\$(configuration)
+  #   name: myapp
 
   # pushing entire folder as a zip archive
-  - path: logs
+  - path: dummy
 
-  # pushing all *.nupkg files in build directory recursively
-  - path: '**\*.nupkg'
+  # # pushing all *.nupkg files in build directory recursively
+  # - path: '**\*.nupkg'
 
 
 #---------------------------------#
@@ -219,20 +211,12 @@ artifacts:
 deploy:
     # Deploy to GitHub Releases
   - provider: GitHub
-    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+    artifact: dummy.zip           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     on:
-      branch: master                # release from master branch only
+      branch: main                # release from master branch only
       appveyor_repo_tag: true       # deploy on tag push only
-
-    # Deploying to a named environment
-  - provider: Environment
-    name: staging
-    on:
-      branch: staging
-      env_var1: value1
-      env_var2: value2
 
 # scripts to run before deployment
 before_deploy:
