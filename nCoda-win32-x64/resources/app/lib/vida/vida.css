@@ -1,0 +1,58 @@
+
+.vida-wrapper {
+  width: 100%;
+  height: 100%; }
+  .vida-wrapper .vida-svg-object {
+    position: relative;
+    max-height: calc(100% - 2em);
+    max-width: 100%; }
+  .vida-wrapper .vida-svg-overlay {
+    overflow: auto;
+    width: 100%;
+    height: 100%; }
+  .vida-wrapper .vida-svg-wrapper {
+    overflow: auto;
+    width: 100%;
+    height: 100%; }
+  .vida-wrapper svg {
+    display: block;
+    margin: 0 auto; }
+  .vida-wrapper .vida-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #DDD;
+    padding: 0 1em;
+    box-sizing: border-box;
+    min-height: 2em;
+    height: 2em; }
+    .vida-wrapper .vida-toolbar .vida-toolbar-block {
+      display: inline-block;
+      flex: 0 0 auto;
+      height: 100%; }
+    .vida-wrapper .vida-toolbar .vida-button {
+      display: inline-block;
+      cursor: pointer;
+      height: 100%;
+      min-width: 2em;
+      box-sizing: border-box;
+      padding: 0.2em;
+      background-origin: content-box;
+      background-repeat: no-repeat;
+      background-position: center center; }
+      .vida-wrapper .vida-toolbar .vida-button:hover {
+        background-color: #BBB; }
+      .vida-wrapper .vida-toolbar .vida-button:active {
+        background-color: #999; }
+    .vida-wrapper .vida-toolbar .vida-orientation-controls {
+      align-self: flex-end;
+      display: flex;
+      align-items: center;
+      padding: 0 1em; }
+  .vida-wrapper .vida-loading-popup {
+    display: none;
+    position: fixed;
+    padding: 10px;
+    border: thin black solid;
+    border-radius: 10px;
+    background-color: #FFF; }

@@ -1,0 +1,142 @@
+// -*- coding: utf-8 -*-
+//-------------------------------------------------------------------------------------------------
+// Program Name:           Julius
+// Program Description:    User interface for the nCoda music notation editor.
+//
+// Filename:               css/ncoda/julius.less
+// Purpose:                LESS file shared by all Views.
+//
+// Copyright (C) 2016 Christopher Antila, Sienna M. Wood
+// Copyright (C) 2017 Sienna M. Wood
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//-------------------------------------------------------------------------------------------------
+
+
+/* ********************************************************************************************* */
+/* Boring things */
+
+#julius-goes-here {
+    height: 100%;
+}
+
+#ncoda {
+    height: 100%;
+}
+
+
+/* ********************************************************************************************* */
+/* Topbar for navigation */
+
+.am-topbar {
+    svg {
+        height: 100%;
+    }
+}
+
+
+/* ********************************************************************************************* */
+/* The loading screen, shown before PyPy.js and Verovio are compiled. */
+
+#ncoda-loading {
+    height: 100%;
+    flex: 1 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+blockquote.nc-quote {
+    i {
+        color: @base-blockquote-border;
+    }
+    p {
+        max-width: 45rem;
+    }
+}
+
+
+/* ********************************************************************************************* */
+/* The colophon, "about nCoda." */
+
+#ncoda-colophon {
+    height: 100%;
+    flex: 1 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+
+    > * {
+        max-height: 100%;
+    }
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    svg {
+        max-width: 75%;
+    }
+}
+
+
+/* ********************************************************************************************* */
+/* Icons and Code Buttons */
+
+svg.nc-svg-icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    padding-right: .5em;
+}
+
+button:hover > svg.nc-svg-icon * {
+    fill: @global-primary;
+}
+
+.am-topbar .icon-coda {
+    height: inherit;
+}
+
+.nc-code-btn {
+}
+
+// =============================================================================
+// Off-screen main menu
+// =============================================================================
+
+.am-menu-offcanvas1 {
+    .am-offcanvas-bar {
+        background: @topbar-bg;
+        box-shadow: 0 0 1rem 0 @black;
+        &:after {
+            background: @topbar-border;
+        }
+    }
+    .am-menu-nav {
+    border-bottom: 1px solid fade(@black, 30%);
+    box-shadow: 0 1px 0 fade(@white, 5%);
+
+        > li > a {
+            border-top: 1px solid fade(@black, 30%);
+            box-shadow: inset 0 1px 0 fade(@white, 7.5%);
+            color: @global-contrast-color;
+            &:focus, &:hover {
+                color: @global-primary;
+                background: unset;
+            }
+        }
+    }
+}

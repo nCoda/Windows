@@ -1,0 +1,54 @@
+// -*- coding: utf-8 -*-
+//-------------------------------------------------------------------------------------------------
+// Program Name:           Julius
+// Program Description:    User interface for the nCoda music notation editor.
+//
+// Filename:               css/ncoda/toolbars_content_areas.less
+// Purpose:                LESS file for toolbars and sibling content areas.
+//
+// Copyright (C) 2017 Sienna M. Wood
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//-------------------------------------------------------------------------------------------------
+
+// Toolbars and Content Areas (siblings of toolbars)
+// (amazeUI buttons in toolbars should be amStyle="link")
+
+@nc-toolbar-height: 4rem;
+
+.nc-toolbar, .ncoda-verovio .vida-wrapper .vida-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: @nc-toolbar-height;
+    text-align: center;
+    padding: .5rem;
+    background-color: @white;
+    border-bottom: solid 1px @gray-lighter;
+    overflow: hidden;
+    z-index: 2;
+    .global-box-shadow();
+
+    button:hover, a:hover {
+        text-decoration: none;
+    }
+
+    // siblings of toolbars - content areas
+    & ~ .nc-content-wrap, & ~ .vida-svg-wrapper, & ~ .vida-svg-overlay {
+        height: 100%;
+        overflow: auto;
+        position: relative; // so that children can be absolutely positioned in relation to this
+    }
+}

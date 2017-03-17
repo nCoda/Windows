@@ -1,0 +1,365 @@
+// -*- coding: utf-8 -*-
+//-------------------------------------------------------------------------------------------------
+// Program Name:           Julius
+// Program Description:    User interface for the nCoda music notation editor.
+//
+// Filename:               css/ncoda/amazeui_overrides.less
+// Purpose:                LESS variable overrides for the nCoda amazeUI theme.
+//
+// Copyright (C) 2016 Christopher Antila, Sienna M. Wood
+// Copyright (C) 2017 Sienna M. Wood
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//-------------------------------------------------------------------------------------------------
+//
+// This file is imported *after* amazeUI but *before* the components are finished styling.
+// Therefore in this file we can override anything in the amazeUI "variables" file, but we do not
+// need to duplicate anything that we are not changing.
+//
+// Hooks are mixins defined in amazeUI that essentially allow us to inject custom styles into the
+// amazeUI source code.  These should be preferred to simple class/id selectors.  The hooks are
+// defined at the end of amazeUI LESS source files, which can be viewed on GitHub here:
+// https://github.com/amazeui/amazeui/tree/master/less.
+
+
+// =============================================================================
+// Base Colours
+// =============================================================================
+
+@import "../../lib/amazeui/less/variables";
+
+@white: #fbfbfb;
+@black: #000;
+@clear: rgba(0, 0, 0, 0);
+
+/* When @black is #000:
+    12.5%: #222
+    13.5%: #222
+    20%:   #333
+    25%:   #444
+    33.5%: #333
+    50%:   #888
+    60%:   #999
+    75%:   #bfbfbf
+    87.5%: #dfdfdf
+    93.5%: #eee
+    99%:   #fcfcfc
+*/
+
+@gray-darker:     lighten(@black, 12.5%);
+@gray-dark:       lighten(@black, 25%);
+@gray:            lighten(@black, 50%);
+@gray-light:      lighten(@black, 75%);
+@gray-lighter:    lighten(@black, 87.5%);
+
+@global-primary:   #50C878;  // "Emerald green" per Wikipedia
+@global-secondary: @global-primary;
+@global-success:   #00AB66;  // GO Transit green: soothing for Ontarians
+@global-warning:   #FF8800;  // Web colour "dark orange"
+@global-danger:    #FF0000;  // Web colour "red"
+@global-info:      #ADD8E6;  // "Light Blue" per Wikipedia
+@one-primary:      @global-primary;
+
+
+// =============================================================================
+// Base
+// =============================================================================
+
+@global-background:     @white;
+@global-border:         @gray-lighter;
+@global-contrast-color: @white;
+
+@base-text-color:          @gray-dark;
+@base-heading-font-weight: 400;
+
+@component-active-color: @base-text-color;
+
+@base-blockquote-small-color: @gray;
+blockquote {
+    font-family: inherit;
+    small {
+        font-family: inherit;
+    }
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    font-family: @font-family-sans-serif;
+    font-weight: 300;
+    cursor: default;
+}
+
+// NOTE: these aren't in amazeUI, but we'll use them there anyway
+@global-padding: 1.5rem;
+
+
+// =============================================================================
+// Fonts
+// =============================================================================
+
+@font-family-sans-serif: "Fira Sans", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+
+@font-family-monospace: "Fira Mono", Monaco, Menlo, Consolas, "Courier New", "FontAwesome", monospace;
+
+@fa-font-path: '../../lib/amazeui/fonts';
+
+
+// =============================================================================
+// Buttons
+// =============================================================================
+
+@btn-default-color:              @base-text-color;
+@btn-default-bg:                 @comp-l1-bg;
+@btn-default-border:             @comp-l1-border;
+
+@btn-primary-color:              @white;
+@btn-secondary-color:            @white;
+@btn-success-color:              @white;
+@btn-warning-color:              @white;
+@btn-danger-color:               @white;
+
+.hook-btn() {
+    border-radius: @radius-normal;
+
+    &:focus, &:active:focus {
+        outline: none;
+    }
+}
+
+button {
+    &:focus, &:active:focus {
+        outline: none;
+    }
+}
+
+
+// =============================================================================
+// UI Component Colours
+// =============================================================================
+
+@view-bg:        @global-background;
+
+@comp-l1-bg:     @gray-lighter;
+@comp-l1-border: @gray-light;
+@comp-l1-line:   @gray-light;
+
+@comp-l2-bg:     @gray-light;
+@comp-l2-border: @gray;
+@comp-l2-line:   @gray;
+
+@comp-l3-bg:     @gray;
+@comp-l3-border: @gray-dark;
+@comp-l3-line:   @gray-dark;
+
+
+// =============================================================================
+// Topbar
+// =============================================================================
+// Set the nCoda topbar to dark by default, so we don't have to bother with the "inverse" classes.
+
+@topbar-color:  @global-contrast-color;
+@topbar-bg:     @gray-dark;
+@topbar-border: @gray-dark;
+
+// these two have the effect you expect in the topbar
+@topbar-link-color:                @topbar-color;
+@topbar-link-active-color:         @global-primary;
+// these (from amazeUI's variables.less) are unused in the amazeUI components
+// @topbar-link-hover-color
+// @topbar-link-active-bg
+// @topbar-link-disabled-color
+// @topbar-link-disabled-bg
+
+// this does what you think @topbar-link-hover-color should do
+@nav-link-hover-bg:                darken(@topbar-bg, 5%);
+
+// brand label
+@topbar-brand-hover-color:         @topbar-color;
+// unused in amazeUI
+// @topbar-brand-color
+// @topbar-brand-hover-bg
+
+// we must set the :hover colours manually
+.hook-topbar() {
+    li > a:hover {
+        color: @global-primary;
+
+        &:after {
+            border-bottom-color: @global-primary;
+        }
+    }
+}
+
+
+// =============================================================================
+// Links
+// =============================================================================
+
+@link-color:       @base-text-color;
+@link-hover-color: @global-primary;
+
+
+// =============================================================================
+// Code and Pre
+// =============================================================================
+
+// TODO: pull out these colours from whatever theme is chosen for text editing windows
+@code-color: lighten(@gray-darker, 37.2%);  // @base00 from codemirror_ncoda.less
+@code-bg:    lighten(@gray-darker, 87.5%);  // @base3 from codemirror_ncoda.less
+@pre-bg:     @code-bg;
+@pre-color:  @code-color;
+@pre-border: 1px solid @pre-bg;
+
+
+// =============================================================================
+// OffCanvas (a React component defined in "generics.js" built on amazeUI)
+// =============================================================================
+
+@offcanvas-dimmer-background: fade(@black, 30%);
+@offcanvas-bar-background:    @comp-l1-bg;
+@offcanvas-bar-border-color:  @comp-l1-border;
+
+.hook-offcanvas() {
+    .am-offcanvas-content {
+        padding: @global-padding;
+        background: inherit;
+        color: @base-text-color;
+
+        a {
+            color: @global-primary;
+        }
+    }
+}
+
+.hook-offcanvas-bar() {
+    box-shadow: 0 0 2rem 0 @comp-l1-border;
+}
+
+
+// =============================================================================
+// Modal
+// =============================================================================
+
+.hook-modal() {
+    top: 30%;
+}
+
+// =============================================================================
+// List and ListItem
+// =============================================================================
+
+@list-bg:            @comp-l1-bg;
+@list-border:        @comp-l1-border;
+// does not work:
+// @list-hover-bg
+
+
+// =============================================================================
+// Panel
+// =============================================================================
+
+@panel-bg:            @comp-l1-bg;
+@panel-border-radius: @radius-normal;
+// @panel-hd-padding:            .6rem 1.25rem;
+// @panel-bd-padding:            1.25rem;
+
+@panel-footer-bg:    @comp-l1-bg;
+@panel-inner-border: @comp-l1-line;
+// @panel-footer-padding:       .6rem 1.25rem;
+
+@panel-default-bd:    @comp-l1-border;
+@panel-default-hd-bg: @comp-l1-bg;
+@panel-default-text:  @base-text-color;
+
+@panel-primary-bd:    darken(@global-primary, 5%);
+@panel-primary-hd-bg: @global-primary;
+@panel-primary-text:  @global-contrast-color;
+
+
+// =============================================================================
+// Split Panes and Custom Scrollbars
+// =============================================================================
+
+@pane-head-font-size: @btn-xs-font-size + .5em;
+@pane-head-line-height: @btn-line-height;
+@pane-head-font-padding: .25em;
+@pane-head-height: @pane-head-font-size + @pane-head-line-height + @global-padding;
+@pane-resizer-thickness: 3px;
+@pane-resizer-hover-thickness: 5px;
+
+
+// =============================================================================
+// Tabs
+// used for mode-switching in CodeScoreView
+// =============================================================================
+
+@tab-height: 4rem;
+
+.hook-tabs() {
+    height: 100%;
+    position: relative;
+}
+
+.hook-nav-tabs() {
+    height: @tab-height;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: @white;
+
+    > li > a:hover {
+        color: @icon-btn-hover-color;
+        background-color: @icon-btn-hover-background;
+    }
+}
+
+.hook-tabs-bd() {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: @tab-height;
+    z-index: 0;
+}
+
+.hook-tab-panel() {
+    height: 100%;
+    padding: 0;
+    background-color: @white;
+
+    > div { // content wrapper
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: @view-bg;
+        padding-top: @tab-height;
+    }
+}
+
+// =============================================================================
+// Mixins
+// =============================================================================
+
+.global-box-shadow() {
+    box-shadow: 0 0 @global-padding 0 @comp-l1-border;
+}

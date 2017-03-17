@@ -1,0 +1,327 @@
+// -*- coding: utf-8 -*-
+//-------------------------------------------------------------------------------------------------
+// Program Name:           Julius
+// Program Description:    User interface for the nCoda music notation editor.
+//
+// Filename:               css/ncoda/structure_view.less
+// Purpose:                LESS file for StructureView
+//
+// Copyright (C) 2016 Christopher Antila, Sienna M. Wood
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//-------------------------------------------------------------------------------------------------
+
+@import "amazeui_overrides";
+
+/*************************************************************************************************/
+/* Shared stuff */
+
+#nc-strv-frame {
+    /* This contains the menus and #nc-structureview. It exists basically to ensure that the
+     * menus don't interfere with the StructureView flexbox layout.
+     */
+    height: 100%;
+    flex: 1 1 0%;
+    background: @view-bg;
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+
+    ::-webkit-scrollbar {
+        background: @comp-l1-border;
+        width: 0.75rem;
+    }
+    ::-webkit-scrollbar-thumb { background: darken(@comp-l1-border, 7%); }
+}
+
+#nc-strv-corner-menus {
+    z-index: 500;
+    flex: 0 0 0;
+}
+
+#nc-strv-view {
+    z-index: 250;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/*************************************************************************************************/
+/* active section <article> */
+.nc-active-sections {
+    z-index: 1;
+    background: @comp-l1-bg;
+    border: 1px solid @comp-l1-border;
+    .global-box-shadow();
+    border-radius: @radius-lg;
+}
+.nc-active-sections > header {
+    text-align: center;
+    font-size: x-large;
+    margin: 0 1rem;
+}
+.nc-active-sections > div {
+    padding: @global-padding 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+/*************************************************************************************************/
+/* <section> corresponding to an MEI <section> */
+@nc-strv-section-shadow-transition: 0.5s;
+.nc-strv-section {
+    .am-dropdown-toggle {
+        border: none;
+        padding: 0;
+        .am-icon-caret-down, .am-icon-caret-up {
+            display: none;
+        }
+    }
+    .am-panel {
+        margin-bottom: 0;
+        .am-panel-hd {
+            border-bottom: none;
+            h3 {
+                margin: 0;
+            }
+        }
+        .am-panel-footer {
+            border-top: none;
+            address {
+                margin: unset;
+            }
+        }
+        .nc-strv-section-img { flex: 1; width: 10rem; display: block; overflow: hidden; }
+        img { width: 100%; }
+        .am-icon-primary {
+            background-color: @comp-l2-bg;
+            transition: background-color .5s;
+        }
+    }
+}
+
+.nc-strv-section:hover .am-icon-primary {
+    background-color: @global-primary;
+}
+
+@drop-transition: width 0.2s ease-in-out;
+.nc-strv-drop-target {
+    width: @global-padding;
+    transition: @drop-transition;
+}
+.nc-strv-drop-target-active {
+    width: @global-padding * 4;
+    background: @comp-l2-bg;
+    transition: @drop-transition;
+}
+
+
+/*************************************************************************************************/
+/* StructureView Corner Menus */
+.li-hover {
+    // We do this with transparency so that nested lists will show as doubly darkened
+    background: fade(@black, 15%);
+}
+.nc-strv-menu {
+    background: @comp-l1-bg;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    position: absolute;
+    max-width: 80%;
+    max-height: 80%;
+    padding: @global-padding;
+    .global-box-shadow();
+    .header {
+        cursor: default;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            margin: 0 1rem 0 0.5rem;
+        }
+    }
+    ul {
+        list-style-type: none;
+    }
+    > ul {
+        margin-top: 0.5rem;
+    }
+    li {
+        margin-bottom: unset;
+        padding: 0.2rem 0.5rem;
+        border: none;
+        .am-btn {
+            color:        @btn-default-color;
+            background:   @btn-default-bg;
+            border-color: @btn-default-border;
+        }
+        &:hover {
+            .li-hover;
+            // This bit could probably be more elegant... oh well!
+            .am-btn-danger {
+                color:        @btn-danger-color;
+                background:   @btn-danger-bg;
+                border-color: @btn-danger-border;
+            }
+            .am-btn-warning {
+                color:        @btn-warning-color;
+                background:   @btn-warning-bg;
+                border-color: @btn-warning-border;
+            }
+            .am-btn-success {
+                color:        @btn-success-color;
+                background:   @btn-success-bg;
+                border-color: @btn-success-border;
+            }
+        }
+    }
+}
+
+
+// Extra classes that set the corners
+// tr: top right; bl: bottom left; etc.
+@corner-menu-border: .1rem solid @comp-l1-border;
+.nc-strv-menu-tr {
+    border-left:   @corner-menu-border;
+    border-bottom: @corner-menu-border;
+    right: 0;
+    border-bottom-left-radius: @radius-lg;
+}
+.nc-strv-menu-tl {
+    border-right:  @corner-menu-border;
+    border-bottom: @corner-menu-border;
+    left: 0;
+    border-bottom-right-radius: @radius-lg;
+}
+.nc-strv-menu-br {
+    border-left: @corner-menu-border;
+    border-top:  @corner-menu-border;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: @radius-lg;
+}
+.nc-strv-menu-bl {
+    border-right: @corner-menu-border;
+    border-top:   @corner-menu-border;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: @radius-lg
+}
+
+.nc-strv-breadcrumbs {
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    .am-breadcrumb {
+        .am-active {
+            color: @global-primary;
+        }
+        &:hover .am-active {
+            color: inherit;
+        }
+        button {
+            background: none;
+            border: none;
+            border-bottom: 2px solid @view-bg;
+            &:hover {
+                color: @global-primary;
+                border-bottom-color: @global-primary;
+            }
+        }
+    }
+}
+
+
+//////////////////////////////////////////////////////////
+// Header Bar
+.header-button { margin-right: 1rem; }
+
+
+//////////////////////////////////////////////////////////
+// Collaborators
+#nc-strv-collaboration .am-comments-list { overflow-y: scroll; }
+#nc-strv-collaboration {
+    li:hover { background: unset; }
+    .am-comment-main:before { border-right-color: @comp-l1-border; }
+    .am-comment-main:after { border-right-color: @comp-l1-border; }
+    .am-comment-main { border-color: @comp-l1-border; }
+    .am-comment-hd {
+        background: @comp-l1-border;
+        border-color: @comp-l1-border;
+    }
+    .am-comment-author { color: inherit; }
+    .am-comment-meta { color: inherit; }
+}
+
+
+//////////////////////////////////////////////////////////
+// Staves Structure
+#nc-strv-staves {
+    > ul {
+        overflow-y: scroll;
+    }
+    max-height: 50%;
+    max-width: 50rem;
+    .nc-strv-partslist-container {
+        .am-nav {
+            margin-top: @global-padding;
+        }
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .am-offcanvas {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            .am-offcanvas-bar {
+                position: absolute;
+                height: 100%;
+                max-width: 80%;
+                background: @comp-l2-bg;
+                .am-offcanvas-content {
+                    color: inherit;
+                    height: 100%;
+                }
+                .am-offcanvas-bar {
+                    // for <section>s inside <section>s
+                    background: @comp-l3-bg;
+                    border-color: @comp-l3-border;
+                    box-shadow: 0 0 @global-padding 0 @comp-l3-border;
+                    color: @global-contrast-color;
+                    &:after {
+                        background: @comp-l3-bg;
+                    }
+                }
+            }
+        }
+    }
+    .am-list > li {
+        background: inherit;
+        &:hover {
+            .li-hover;
+        }
+    }
+}

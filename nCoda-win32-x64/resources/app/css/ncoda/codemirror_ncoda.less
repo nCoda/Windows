@@ -1,0 +1,349 @@
+// -*- coding: utf-8 -*-
+//-------------------------------------------------------------------------------------------------
+// Program Name:           Julius
+// Program Description:    Color theme for CodeMirror in CodeScoreView for the nCoda music notation editor.
+//
+// Filename:               css/ncoda/codemirror_ncoda.less
+// Purpose:                LESS file for CodeMirror in CodeScoreView, a
+//                         customization of the Solarized theme (http://ethanschoonover.com/solarized)
+//
+// Copyright (C) 2016 by Marijn Haverbeke <marijnh@gmail.com> and others
+// Copyright (C) 2016 Sienna M. Wood
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+//-------------------------------------------------------------------------------------------------
+@import "amazeui_overrides";
+
+@base03:    @gray-darker;
+@base02:    lighten(@gray-darker, 12.5%);
+@base01:    lighten(@gray-darker, 25%);
+@base00:    lighten(@gray-darker, 37.2%);
+@base0:     lighten(@gray-darker, 50%);
+@base1:     lighten(@gray-darker, 62.5%);
+@base2:     lighten(@gray-darker, 75%);
+@base3:     lighten(@gray-darker, 87.5%);
+
+@solar-yellow:  #b58900;
+@solar-orange:  #cb4b16;
+@solar-red:     #dc322f;
+@solar-magenta: #d33682;
+@solar-violet:  #6c71c4;
+@solar-blue:    #268bd2;
+@solar-cyan:    #2aa198;
+@solar-green:   #859900;
+
+.codemirror-ncoda.base03 {
+    color: @base03;
+}
+
+.codemirror-ncoda.base02 {
+    color: @base02;
+}
+
+.codemirror-ncoda.base01 {
+    color: @base01;
+}
+
+.codemirror-ncoda.base00 {
+    color: @base00;
+}
+
+.codemirror-ncoda.base0 {
+    color: @base0;
+}
+
+.codemirror-ncoda.base1 {
+    color: @base1;
+}
+
+.codemirror-ncoda.base2 {
+    color: @base2;
+}
+
+.codemirror-ncoda.base3 {
+    color: @base3;
+}
+
+.codemirror-ncoda.solar-yellow {
+    color: @solar-yellow;
+}
+
+.codemirror-ncoda.solar-orange {
+    color: @solar-orange;
+}
+
+.codemirror-ncoda.solar-red {
+    color: @solar-red;
+}
+
+.codemirror-ncoda.solar-magenta {
+    color: @solar-magenta;
+}
+
+.codemirror-ncoda.solar-violet {
+    color: @solar-violet;
+}
+
+.codemirror-ncoda.solar-blue {
+    color: @solar-blue;
+}
+
+.codemirror-ncoda.solar-cyan {
+    color: @solar-cyan;
+}
+
+.codemirror-ncoda.solar-green {
+    color: @solar-green;
+}
+
+/* Color scheme for code-mirror */
+
+.cm-s-codemirror-ncoda {
+    line-height: 1.45em;
+    color-profile: sRGB;
+    rendering-intent: auto;
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark {
+    color: @base0;
+    background-color: @base03;
+    text-shadow: @base03 0 1px;
+}
+
+.cm-s-codemirror-ncoda.cm-s-light {
+    color: @base00;
+    background-color: @base3;
+    text-shadow: @base3 0 1px;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-widget {
+    text-shadow: none;
+}
+
+.cm-s-codemirror-ncoda .cm-header {
+    color: @base01;
+}
+
+.cm-s-codemirror-ncoda .cm-quote {
+    color: @base1;
+}
+
+.cm-s-codemirror-ncoda .cm-keyword {
+    color: @solar-orange;
+}
+
+.cm-s-codemirror-ncoda .cm-atom {
+    color: @solar-magenta;
+}
+
+.cm-s-codemirror-ncoda .cm-number {
+    color: @solar-magenta;
+}
+
+.cm-s-codemirror-ncoda .cm-def {
+    color: @solar-cyan;
+}
+
+.cm-s-codemirror-ncoda .cm-variable {
+    color: @base0;
+}
+
+.cm-s-codemirror-ncoda .cm-variable-2 {
+    color: @solar-yellow;
+}
+
+.cm-s-codemirror-ncoda .cm-variable-3 {
+    color: @solar-violet;
+}
+
+.cm-s-codemirror-ncoda .cm-property {
+    color: @solar-cyan;
+}
+
+.cm-s-codemirror-ncoda .cm-operator {
+    color: @solar-violet;
+}
+
+.cm-s-codemirror-ncoda .cm-comment {
+    color: @base01;
+    font-style: italic;
+}
+
+.cm-s-codemirror-ncoda .cm-string {
+    color: @solar-green;
+}
+
+.cm-s-codemirror-ncoda .cm-string-2 {
+    color: @solar-yellow;
+}
+
+.cm-s-codemirror-ncoda .cm-meta {
+    color: @solar-green;
+}
+
+.cm-s-codemirror-ncoda .cm-qualifier {
+    color: @solar-yellow;
+}
+
+.cm-s-codemirror-ncoda .cm-builtin {
+    color: @solar-magenta;
+}
+
+.cm-s-codemirror-ncoda .cm-bracket {
+    color: @solar-orange;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-matchingbracket {
+    color: @solar-green;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-nonmatchingbracket {
+    color: @solar-red;
+}
+
+.cm-s-codemirror-ncoda .cm-tag {
+    color: @base1;
+}
+
+.cm-s-codemirror-ncoda .cm-attribute {
+    color: @solar-cyan;
+}
+
+.cm-s-codemirror-ncoda .cm-hr {
+    color: transparent;
+    border-top: 1px solid @base01;
+    display: block;
+}
+
+.cm-s-codemirror-ncoda .cm-link {
+    color: @base1;
+    cursor: pointer;
+}
+
+.cm-s-codemirror-ncoda .cm-special {
+    color: @solar-violet;
+}
+
+.cm-s-codemirror-ncoda .cm-em {
+    color: @base0;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.cm-s-codemirror-ncoda .cm-strong {
+    color: @base3;
+}
+
+.cm-s-codemirror-ncoda .cm-error,
+.cm-s-codemirror-ncoda .cm-invalidchar {
+    color: @base01;
+    border-bottom: 1px dotted @solar-red;
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark div.CodeMirror-selected {
+    background: @base02;
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark.CodeMirror ::selection {
+    background: rgba(red(@base02), green(@base02), blue(@base02), 0.99);
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark .CodeMirror-line::-moz-selection, .cm-s-dark .CodeMirror-line > span::-moz-selection, .cm-s-dark .CodeMirror-line > span > span::-moz-selection {
+    background: rgba(red(@base02), green(@base02), blue(@base02), 0.99);
+}
+
+.cm-s-codemirror-ncoda.cm-s-light div.CodeMirror-selected {
+    background: @base2;
+}
+
+.cm-s-codemirror-ncoda.cm-s-light .CodeMirror-line::selection, .cm-s-light .CodeMirror-line > span::selection, .cm-s-light .CodeMirror-line > span > span::selection {
+    background: @base2;
+}
+
+.cm-s-codemirror-ncoda.cm-s-light .CodeMirror-line::-moz-selection, .cm-s-ligh .CodeMirror-line > span::-moz-selection, .cm-s-ligh .CodeMirror-line > span > span::-moz-selection {
+    background: @base2;
+}
+
+/* Editor styling */
+
+/* Little shadow on the view-port of the buffer view */
+//.cm-s-codemirror-ncoda.CodeMirror {
+//    -moz-box-shadow: inset 7px 0 12px -6px @black;
+//    -webkit-box-shadow: inset 7px 0 12px -6px @black;
+//    box-shadow: inset 7px 0 12px -6px @black;
+//}
+
+/* Gutter border  */
+.cm-s-codemirror-ncoda .CodeMirror-gutters {
+    border-right: 1px solid;
+}
+
+/* Gutter colors and line number styling based of color scheme (dark / light) */
+
+/* Dark */
+.cm-s-codemirror-ncoda.cm-s-dark .CodeMirror-gutters {
+    background-color: @base03;
+    border-color: darken(@base03, 10%);
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark .CodeMirror-linenumber {
+    text-shadow: @black 0 -1px;
+}
+
+/* Light */
+.cm-s-codemirror-ncoda.cm-s-light .CodeMirror-gutters {
+    background-color: @base3;
+    border-color: darken(@base3, 10%);
+}
+
+/* Common */
+.cm-s-codemirror-ncoda .CodeMirror-linenumber {
+    color: @base01;
+    padding: 0 5px;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-guttermarker-subtle {
+    color: @base01;
+}
+
+.cm-s-codemirror-ncoda.cm-s-dark .CodeMirror-guttermarker {
+    color: @base2;
+}
+
+.cm-s-codemirror-ncoda.cm-s-light .CodeMirror-guttermarker {
+    color: @solar-orange;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-gutter .CodeMirror-gutter-text {
+    color: @base01;
+}
+
+.cm-s-codemirror-ncoda .CodeMirror-cursor {
+    border-left: 1px solid @base00;
+}
+
+/* Active line */
+.cm-s-codemirror-ncoda.cm-s-dark .CodeMirror-activeline-background {
+    background: rgba(red(@white), green(@white), blue(@white), 0.10);
+}
+
+.cm-s-codemirror-ncoda.cm-s-light .CodeMirror-activeline-background {
+    background: rgba(red(@black), green(@black), blue(@black), 0.10);
+}
