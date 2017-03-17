@@ -258,7 +258,7 @@ deploy_script:
 #        global handlers          #
 #---------------------------------#
 
-on successful build
+# on successful build
 on_success:
   
 
