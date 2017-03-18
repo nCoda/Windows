@@ -54,18 +54,6 @@ max_jobs: 1
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  - git clone --recursive https://github.com/nCoda/julius.git julius
-  - git clone https://github.com/nCoda/lychee.git lychee
-  - git clone https://github.com/nCoda/fujian.git fujian
-  - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
-  - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
-  - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
-  - rm julius/js/electron_main.js
-  - pip install --upgrade pip
-  - pip install Cython
-  - pip install virtualenv
-  - pip install py2app
-  - pip install biplist
 
 # clone directory
 clone_folder: C:\ncodawindows
@@ -96,6 +84,18 @@ matrix:
 
 # scripts that run after cloning repository
 install:
+  - git clone --recursive https://github.com/nCoda/julius.git julius
+  - git clone https://github.com/nCoda/lychee.git lychee
+  - git clone https://github.com/nCoda/fujian.git fujian
+  - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+  - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
+  - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
+  - rm julius/js/electron_main.js
+  - pip install --upgrade pip
+  - pip install Cython
+  - pip install virtualenv
+  - pip install py2app
+  - pip install biplist
   - cp C:/projects/nCoda/Windows/electron_main_production.js julius\js\electron_main.js
   - git 
   # by default, all script lines are interpreted as batch
