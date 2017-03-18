@@ -211,7 +211,7 @@ deploy:
     artifact: dummy.zip           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
-    auth_token: gh_personal_access_token
+    auth_token: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
     on:
       branch: main                # release from master branch only
       appveyor_repo_tag: false       # deploy on tag push only
