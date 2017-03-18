@@ -96,8 +96,7 @@ install:
   - pip install virtualenv
   - pip install py2app
   - pip install biplist
-  - cp electron_main_production.js julius\js\electron_main.js
-  - git 
+  - cp electron_main_production.js julius\js\electron_main.js 
   # by default, all script lines are interpreted as batch
   - echo This is batch
   # to run script as a PowerShell command prepend it with ps:
