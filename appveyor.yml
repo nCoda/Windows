@@ -211,7 +211,7 @@ deploy:
     artifact: dummy.zip           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
-    auth_token: FURM7v6sRU/e84bTRvcl+hmzr4pXDOoPSbWPTCLmIaY7qByQU/Mcq/ov+BDoICx//4gKH8aNQVIzx3fkvXLk1tYOqWVHuFXzQ809c+R2FtqjOBH7++bq8QPqrKOaiyodabh34ioZOYKC8cASz70LJZ8mZZ4nk7HY+TDKigunoMvONasPzTwuWbGJg9vjupjpbv1ip07HeXORjX7uC2uIqr3ldxyhG/0XbbKJhtB22iK0JisQANAxe9DFXGNy+kDDHDPI7StEdCZsSUrNpeEVYcqLIyujxjeM2qlJAdKpie3wZFRYBYIxkjowno6O2CkHnwoE/GKxnjJ1jj3nKsa7qEGl4bcaAqO6icDGfbSrELdw1UWdCY0OBzMwYLVV6iJNYABuUMZg4Jxl0HmQ4HotnJGq6si+6TcGDI6rXfsTtt54aVkStJ3I+drMplUK6f8dcOacWLIuQr1cYEJVvZEfsqH4Uacqot5SqW1kx9Sc6hvwRJyIYKYTcKraMIzol4h3iLqlDMHZlyfcyQYF+LYo9AVFETEWbqjGf2dtx/mnMgwhRmsiyJmywt7wkftNEoL4TuosUL23RqfbvU8T7TvXXntTLRDRR2X03ddhQrL8fYDiNEOBVSWUO80Agxum+aWOy8o0mGBZ8Ze3qsXeClSvrEUMxxWujrRFYih6cGPp8wE=
+    auth_token: gh_personal_access_token
     on:
       branch: main                # release from master branch only
       appveyor_repo_tag: false       # deploy on tag push only
