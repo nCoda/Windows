@@ -96,7 +96,7 @@ install:
   - pip install --upgrade pip
   - pip install Cython
   - pip install virtualenv
-  - pip install py2app
+  - pip install py2exe
   - pip install biplist
   - cp electron_main_production.js julius\js\electron_main.js
   - cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && node_modules\.bin\electron-rebuild --version 1.6.0 && cd ..
@@ -111,7 +111,7 @@ install:
   - cd mercurial-hug && pip install . && cd ..
   - cd hgdemo_config && python -m shelfex && cd ..
   - mkdir programs
-  - cp -r hgdemo_config/repo programs/hgdemo
+  # - cp -r hgdemo_config/repo programs/hgdemo
   - pip install pytest
   - pip install mock 
   # by default, all script lines are interpreted as batch
@@ -202,7 +202,7 @@ after_test:
 
 # to run your custom scripts instead of automatic tests
 test_script:
-  - echo This is my custom test script
+  - ps: sh build_test.sh
 
 # to disable automatic tests
 #test: off
@@ -249,6 +249,9 @@ deploy:
 
 # scripts to run before deployment
 before_deploy:
+  # - python package_ncoda_macOS.py
+  - python backend\setup.py py2exe
+  # - cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app copy backend into frontend
 
 # scripts to run after deployment
 after_deploy:
