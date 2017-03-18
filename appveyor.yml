@@ -76,12 +76,12 @@ environment:
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
 
-# build cache to preserve files/folders between builds
-cache:
-  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
-  - projectA\libs
-  - node_modules                    # local npm modules
-  - '%LocalAppData%\NuGet\Cache'
+# # build cache to preserve files/folders between builds
+# cache:
+#   - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+#   - projectA\libs
+#   - node_modules                    # local npm modules
+#   - '%LocalAppData%\NuGet\Cache'
 
 # scripts that run after cloning repository
 install:
