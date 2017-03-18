@@ -61,7 +61,7 @@ init:
   - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
   - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
   - rm julius\js\electron_main.js
-  - cp c:\projects\nCoda\Windows\electron_main_production.js julius\js\electron_main.js
+  - cp C:\projects\nCoda\Windows\electron_main_production.js julius\js\electron_main.js
   - pip install --upgrade pip
   - pip install Cython
   - pip install virtualenv
@@ -69,7 +69,7 @@ init:
   - pip install biplist
 
 # clone directory
-clone_folder: c:\projects\nCoda\Windows
+clone_folder: C:\projects\nCoda\Windows
 
 # fetch repository as zip archive
 # shallow_clone: true                 # default is "false"
