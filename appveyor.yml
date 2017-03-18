@@ -109,7 +109,7 @@ install:
   - cd fujian && pip install . && cd ..
   - cd ShelfExtender && pip install . && cd ..
   - cd mercurial-hug && pip install . && cd ..
-  - cd hgdemo_config && python -m shelfex && cd ..
+  # - cd hgdemo_config && python -m shelfex && cd ..
   - mkdir programs
   # - cp -r hgdemo_config/repo programs/hgdemo
   - pip install pytest
