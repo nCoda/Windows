@@ -67,8 +67,8 @@ init:
   - pip install py2app
   - pip install biplist
 
-# # clone directory
-# clone_folder: C:\projects\nCoda\Windows\main
+# clone directory
+clone_folder: C:\ncodawindows
 
 # fetch repository as zip archive
 # shallow_clone: true                 # default is "false"
