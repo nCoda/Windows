@@ -68,11 +68,8 @@ clone_folder: c:\projects\nCoda\Windows
 
 # environment variables
 environment:
-  my_var1: value1
-  my_var2: value2
-  # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
-  my_secure_var1:
-    secure: FW3tJ3fMncxvs58/ifSP7w==
+  gh_personal_access_token:
+    secure: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
 
 
 # this is how to allow failing jobs in the matrix
