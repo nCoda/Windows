@@ -69,7 +69,7 @@ clone_folder: C:/ncodawindows
 environment:
   auth_token:
     secure: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
-    nodejs_version: "6"
+    nodejs_version: "6.3.0"
 
 
 # this is how to allow failing jobs in the matrix
