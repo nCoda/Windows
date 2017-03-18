@@ -56,7 +56,7 @@ max_jobs: 1
 init:
 
 # clone directory
-clone_folder: C:\ncodawindows
+clone_folder: C:/ncodawindows
 
 # fetch repository as zip archive
 # shallow_clone: true                 # default is "false"
@@ -69,6 +69,7 @@ clone_folder: C:\ncodawindows
 environment:
   auth_token:
     secure: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
+    nodejs_version: "6"
 
 
 # this is how to allow failing jobs in the matrix
@@ -84,6 +85,7 @@ matrix:
 
 # scripts that run after cloning repository
 install:
+  - ps: Install-Product node $env:nodejs_version
   - git clone --recursive https://github.com/nCoda/julius.git julius
   - git clone https://github.com/nCoda/lychee.git lychee
   - git clone https://github.com/nCoda/fujian.git fujian
