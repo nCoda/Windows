@@ -143,8 +143,8 @@ after_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
 
-# to disable automatic builds
-#build: off
+to disable automatic builds
+build: off
 
 #---------------------------------#
 #       tests configuration       #
