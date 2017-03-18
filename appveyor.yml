@@ -216,7 +216,7 @@ deploy:
     prerelease: false
     on:
       branch: main                # release from master branch only
-      appveyor_repo_tag: true       # deploy on tag push only
+      appveyor_repo_tag: false       # deploy on tag push only
 
 # scripts to run before deployment
 before_deploy:
