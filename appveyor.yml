@@ -104,11 +104,11 @@ install:
   - cd julius && node_modules\.bin\lessc css\ncoda\main.less css\ncoda\main.css && cd ..
   - virtualenv --system-site-packages backend_venv
   - backend_venv\Scripts\activate
-  - cd mercurial-hug && pip install && cd ..
-  - cd lychee && pip install && cd ..
-  - cd fujian && pip install && cd ..
-  - cd ShelfExtender && pip install && cd ..
-  - cd mercurial-hug && pip install && cd ..
+  - cd mercurial-hug && pip install . && cd ..
+  - cd lychee && pip install . && cd ..
+  - cd fujian && pip install . && cd ..
+  - cd ShelfExtender && pip install . && cd ..
+  - cd mercurial-hug && pip install . && cd ..
   - cd hgdemo_config && python -m shelfex && cd ..
   - mkdir programs
   - cp -r hgdemo_config/repo programs/hgdemo
