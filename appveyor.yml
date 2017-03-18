@@ -96,7 +96,22 @@ install:
   - pip install virtualenv
   - pip install py2app
   - pip install biplist
-  - cp electron_main_production.js julius\js\electron_main.js 
+  - cp electron_main_production.js julius/js/electron_main.js
+  - cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
+  - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
+  - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
+  - virtualenv --system-site-packages backend_venv
+  - source backend_venv/bin/activate
+  - cd mercurial-hug && pip install . && cd ..
+  - cd lychee && pip install . && cd ..
+  - cd fujian && pip install . && cd ..
+  - cd ShelfExtender && pip install . && cd ..
+  - cd mercurial-hug && pip install . && cd ..
+  - cd hgdemo_config && python -m shelfex && cd ..
+  - mkdir programs
+  - cp -r hgdemo_config/repo programs/hgdemo
+  - pip install pytest
+  - pip install mock 
   # by default, all script lines are interpreted as batch
   - echo This is batch
   # to run script as a PowerShell command prepend it with ps:
