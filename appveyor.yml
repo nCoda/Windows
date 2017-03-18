@@ -9,7 +9,7 @@
 #---------------------------------#
 
 # version format
-version: 0.0.{build}
+version: 0.0.1
 
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
@@ -68,7 +68,7 @@ clone_folder: c:\projects\nCoda\Windows
 
 # environment variables
 environment:
-  gh_personal_access_token:
+  auth_token:
     secure: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
 
 
@@ -209,9 +209,11 @@ deploy:
     # Deploy to GitHub Releases
   - provider: GitHub
     artifact: dummy.zip           # upload all NuGet packages to release assets
-    draft: false
+    draft: true
+    force_update: true
     prerelease: false
-    auth_token: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
+    auth_token: 
+      secure: Ile301NnDvTpQ6i1B3Kdgh1hLc9QuiABjJTXPERabJgEnNyBc8ogqUZVYEpdOtio
     on:
       branch: main                # release from master branch only
       appveyor_repo_tag: false       # deploy on tag push only
