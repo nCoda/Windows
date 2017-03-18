@@ -114,6 +114,7 @@ install:
   # - cp -r hgdemo_config/repo programs/hgdemo
   - pip install pytest
   - pip install mock 
+  - python backend\setup.py py2exe
   # by default, all script lines are interpreted as batch
   - echo This is batch
   # to run script as a PowerShell command prepend it with ps:
@@ -254,7 +255,6 @@ deploy:
 # scripts to run before deployment
 before_deploy:
   # - python package_ncoda_macOS.py
-  - python backend\setup.py py2exe
   # - cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app copy backend into frontend
 
 # scripts to run after deployment
