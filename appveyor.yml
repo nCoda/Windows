@@ -96,7 +96,7 @@ install:
   - pip install --upgrade pip
   - pip install Cython
   - pip install virtualenv
-  - pip install py2exe
+  - pip install http://sourceforge.net/projects/py2exe/files/latest/download?source=files
   - pip install biplist
   - cp electron_main_production.js julius\js\electron_main.js
   - cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && node_modules\.bin\electron-rebuild --version 1.6.0 && cd ..
