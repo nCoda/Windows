@@ -96,7 +96,7 @@ install:
   - pip install virtualenv
   - pip install py2app
   - pip install biplist
-  - cp C:/projects/nCoda/Windows/electron_main_production.js julius\js\electron_main.js
+  - cp electron_main_production.js julius\js\electron_main.js
   - git 
   # by default, all script lines are interpreted as batch
   - echo This is batch
