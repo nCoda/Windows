@@ -61,7 +61,6 @@ init:
   - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
   - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
   - rm julius/js/electron_main.js
-  - cp C:/projects/nCoda/Windows/electron_main_production.js julius\js\electron_main.js
   - pip install --upgrade pip
   - pip install Cython
   - pip install virtualenv
@@ -97,6 +96,7 @@ matrix:
 
 # scripts that run after cloning repository
 install:
+  - cp C:/projects/nCoda/Windows/electron_main_production.js julius\js\electron_main.js
   - git 
   # by default, all script lines are interpreted as batch
   - echo This is batch
